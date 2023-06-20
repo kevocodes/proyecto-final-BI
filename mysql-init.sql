@@ -7,5 +7,8 @@ CREATE TABLE IF NOT EXISTS airplane (
   year INT NOT NULL
 );
 
--- Insertar data inicial en la tabla airplane
+-- Insertar example data en la tabla airplane
 
+INSERT INTO airplane (code, model, year) VALUES
+('A0001', 'Embraer', 1995),
+('B0001', 'NeoMax', 2016);
