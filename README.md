@@ -93,7 +93,7 @@ Esto inicia y ejecuta los servicios definidos en el archivo docker-compose.yml e
 ## Pasos para la ejecución del ETL
 Para ejecutar el proceso ETL debes seguir los siguientes pasos:
 
-1. Abrir la terminal de tu preferencia y ejecutar el script [move-iata-codes.bat](move-iata-codes.bat). Esto moverá el archivo CSV [IATA codes.csv](Resources/IATA%20Codes.csv) hacia el disco local `C:\` (indispensable para el funcionamiento del ETL)
+1. Abrir el proyecto con el explorador de archivos y ejecuta el script [move-iata-codes.bat](move-iata-codes.bat) como administrador. Esto moverá el archivo CSV [IATA codes.csv](Resources/IATA%20Codes.csv) hacia el disco local `C:\` (indispensable para el funcionamiento del ETL)
 2. Luego dirigirte desde la terminal hasta la carpeta [./ETL/BIFinalProject](ETL/BIFinalProject/)
 3. Ejecutar el script [BIFinalProject_run.bat](ETL/BIFinalProject/BIFinalProject_run.bat)
 
