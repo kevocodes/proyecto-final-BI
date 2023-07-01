@@ -19,11 +19,12 @@ herramienta Talend Studio, por lo que ha definido el siguiente problema:
 
 Existen dos bases de datos relacionales, una base de datos utilizando MySQL que contiene la información de los aviones disponibles en la empresa (tabla `airplane`) y la otra base de datos usando PostgreSQL que contiene la información de los vuelos realizados por la empresa (tabla `flight`).
 
-Por motivos de inteligencia de negocios, se solicita generar un reporte en formato CSV sobre las millas totales que realizadas por cada vuelo con el mismo avión y que tienen el mismo lugar de origen y destino.
+Por motivos de inteligencia de negocios, se solicita generar un reporte en formato CSV sobre las millas totales que han sido realizadas por cada vuelo en el mismo avión y que tienen el mismo lugar de origen y destino.
 
 Por ejemplo si se tiene la siguiente información en las tablas `airplane` y `flight`:
-
+- Tabla `airplane`
 ![Table airplane](Resources/images/table-airplane.png)
+- Tabla `flight`
 ![Table flight](Resources/images/table-flight.png)
 
 Luego de ejecutar el proceso ETL, la información del archivo de salida debe ser la siguiente:
@@ -73,7 +74,7 @@ La tabla `flight` de PostgreSQL tiene la siguiente estructura:
 | destination | varchar(3) | Destino de llegada del vuelo | |
 | departure | timestamp | Fecha de salida | |
 | arrival | timestamp | Fecha de arribo | |
-| flightMiles | varchar(3) | Total de millas voladas en el trayecto | |
+| flightMiles | decimal | Total de millas voladas en el trayecto | |
 
 Los scripts de creación de tablas y de inserción de datos de [MySQL](Databases/mysql-init.sql) y [PostgreSQL](Databases/postgres-init.sql) se encuentran dentro del repositorio en la carpeta [Databases](Databases/). 
 ### Configuración con Docker
@@ -87,16 +88,16 @@ Los pasos a realizar son los siguientes:
 ```bash
 docker compose up -d
 ```
-esto inicia y ejecuta los servicios definidos en el archivo docker-compose.yml en segundo plano (modo "detached"), creando así una instancia de MySQL y PostgreSQL con sus respectivas bases de datos, tablas y esquemas.
+Esto inicia y ejecuta los servicios definidos en el archivo docker-compose.yml en segundo plano (modo "detached"), creando así una instancia de MySQL y PostgreSQL con sus respectivas bases de datos, tablas y esquemas.
 
 ## Pasos para la ejecución del ETL
 Para ejecutar el proceso ETL debes seguir los siguientes pasos:
 
-1. Abrir la terminal de tu preferencia y jecutar el script [move-iata-codes.bat](move-iata-codes.bat), esto moverá el archivo CSV [IATA codes.csv](Resources/IATA%20Codes.csv) hacia el disco local `C:\` (indispensable para el funcionamiento del ETL)
-2. Luego dirigirte desde la terminal hasta la carpeta [.\ETL\BIFinalProject](ETL/BIFinalProject/)
+1. Abrir la terminal de tu preferencia y ejecutar el script [move-iata-codes.bat](move-iata-codes.bat). Esto moverá el archivo CSV [IATA codes.csv](Resources/IATA%20Codes.csv) hacia el disco local `C:\` (indispensable para el funcionamiento del ETL)
+2. Luego dirigirte desde la terminal hasta la carpeta [./ETL/BIFinalProject](ETL/BIFinalProject/)
 3. Ejecutar el script [BIFinalProject_run.bat](ETL/BIFinalProject/BIFinalProject_run.bat)
 
-Como resultado se creará un archivo CSV en la ruta `C:\Program Files (x86)\TOS_DI-8.0.1\studio\workspace\total_de_millas_voladas_por_vuelo.csv` el cual tendrá el reporte del total de millas realizas por cada vuelo realizado por el mismo avión con el mismo origen y destino.
+Como resultado se creará un archivo CSV en la ruta `C:\Program Files (x86)\TOS_DI-8.0.1\studio\workspace\total_de_millas_voladas_por_vuelo.csv` el cual tendrá el reporte de las millas totales que han sido realizadas por cada vuelo en el mismo avión y que tienen el mismo lugar de origen y destino.
 
 ## Importar ETL como job en Talend Open Studio
 
@@ -106,7 +107,7 @@ Para importar el proceso ETL para poder editarlo en Talend Open Studio debes rea
 
 ![Step 1](Resources/images/import-step-1.png)
 
-2. Se abrirá la ventana de `import items` en la cual primero debes de seleccionar la carpeta que contiene el proyecto, en este caso la carpeta [ETL](ETL/), luego debes asegurarte de tener seleccionada las opciones `import dependencies` y `find features needed for the import`, para finalizar seleccionas todos los elementos a importar y das click en el botón `finish`.
+2. Se abrirá la ventana de `import items` en la cual primero debes de seleccionar la carpeta que contiene el proyecto (en este caso la carpeta [ETL](ETL/)), luego debes asegurarte de tener seleccionadas las opciones `import dependencies` y `find features needed for the import`. Para finalizar debes seleccionar todos los elementos a importar y das click en el botón `finish`.
 
 ![Step 2](Resources/images/import-step-2.png)
 
