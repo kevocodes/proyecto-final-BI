@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore" xmlns:relational="http://www.talend.org/cwm/resource/relational/2010">
+  <TalendMetadata:DatabaseConnection xmi:id="_mG6N8BA0Ee6tgMOvw3V1Gw" name="MySQL" id="_dd2tcBA0Ee6tgMOvw3V1Gw" label="MySQL" dataPackage="_mJSMgBA0Ee6tgMOvw3V1Gw" DatabaseType="MySQL" DriverClass="com.mysql.cj.jdbc.Driver" URL="jdbc:mysql://localhost:3306/company?noDatetimeStringSync=true&amp;enabledTLSProtocols=TLSv1.2,TLSv1.1,TLSv1&amp;serverTimezone=UTC" dbVersionString="MYSQL_8" Port="3306" Username="Username" Password="enc:system.encryption.key.v1:4HgiU08CbDC8u0ZCrhUnjKnV/DME+wZ7Q8zq6RZ2su90p7OhEw==" ServerName="localhost" DatasourceName="" FileFieldName="" SID="company" SqlSynthax="" StringQuote="" NullChar="" DbmsId="mysql_id" ProductId="MYSQL" AdditionalParams="noDatetimeStringSync=true&amp;enabledTLSProtocols=TLSv1.2,TLSv1.1,TLSv1&amp;serverTimezone=UTC" StandardSQL="true" SQLMode="false" UiSchema="">
+    <taggedValue xmi:id="_mG6N8RA0Ee6tgMOvw3V1Gw" tag="Is Conn Need Reload" value="true"/>
+    <taggedValue xmi:id="_mHW54BA0Ee6tgMOvw3V1Gw" tag="package filter" value=""/>
+    <taggedValue xmi:id="_mHgq4BA0Ee6tgMOvw3V1Gw" tag="Status" value=""/>
+    <taggedValue xmi:id="_mHgq4RA0Ee6tgMOvw3V1Gw" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_mHgq4hA0Ee6tgMOvw3V1Gw" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_mHgq4xA0Ee6tgMOvw3V1Gw" tag="Description" value=""/>
+    <taggedValue xmi:id="_mHgq5BA0Ee6tgMOvw3V1Gw" tag="Author" value=""/>
+    <taggedValue xmi:id="_mHgq5RA0Ee6tgMOvw3V1Gw" tag="otherParameter"/>
+    <taggedValue xmi:id="_mIdtIBA0Ee6tgMOvw3V1Gw" tag="DB ProductName" value="MySQL"/>
+    <taggedValue xmi:id="_mIdtIRA0Ee6tgMOvw3V1Gw" tag="DB ProductVersion" value="8.0.33"/>
+    <taggedValue xmi:id="_mIdtIhA0Ee6tgMOvw3V1Gw" tag="DB IdentifierQuoteString" value="`"/>
+    <parameters xmi:id="_mG6N8hA0Ee6tgMOvw3V1Gw" key="CONN_PARA_KEY_USERNAME" value="Username"/>
+    <parameters xmi:id="_ZN9dkBffEe6ov4xucUsEDg" key="CONN_PARA_KEY_MAPRDB_TABLE_NS_MAPPING" value=""/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_mJSMgBA0Ee6tgMOvw3V1Gw" name="company" dataManager="_mG6N8BA0Ee6tgMOvw3V1Gw">
+    <ownedElement xsi:type="relational:TdTable" xmi:id="_oYMUEBA0Ee6tgMOvw3V1Gw" name="airplane" id="_oYLtABA0Ee6tgMOvw3V1Gw" label="airplane" tableType="TABLE">
+      <taggedValue xmi:id="_oYMUERA0Ee6tgMOvw3V1Gw" tag="Comment" value=""/>
+      <feature xsi:type="relational:TdColumn" xmi:id="_oYMUEhA0Ee6tgMOvw3V1Gw" name="id" label="id" length="10" sourceType="INT" talendType="id_Integer" key="true" nullable="false">
+        <taggedValue xmi:id="_oYMUExA0Ee6tgMOvw3V1Gw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_oYMUFBA0Ee6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_oYMUFRA0Ee6tgMOvw3V1Gw" name="INT" numericPrecisionRadix="10" javaDataType="4"/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_oYMUFhA0Ee6tgMOvw3V1Gw" name="code" label="code" length="6" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <taggedValue xmi:id="_oYMUFxA0Ee6tgMOvw3V1Gw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_oYMUGBA0Ee6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_oYMUGRA0Ee6tgMOvw3V1Gw" name="VARCHAR" numericPrecisionRadix="10" javaDataType="12"/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_oYMUGhA0Ee6tgMOvw3V1Gw" name="model" label="model" length="10" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <taggedValue xmi:id="_oYMUGxA0Ee6tgMOvw3V1Gw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_oYMUHBA0Ee6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_oYMUHRA0Ee6tgMOvw3V1Gw" name="VARCHAR" numericPrecisionRadix="10" javaDataType="12"/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_oYMUHhA0Ee6tgMOvw3V1Gw" name="year" label="year" length="10" sourceType="INT" talendType="id_Integer" nullable="false">
+        <taggedValue xmi:id="_oYMUHxA0Ee6tgMOvw3V1Gw" tag="Comment" value=""/>
+        <initialValue xsi:type="relational:TdExpression" xmi:id="_oYMUIBA0Ee6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+        <sqlDataType xmi:id="_oYMUIRA0Ee6tgMOvw3V1Gw" name="INT" numericPrecisionRadix="10" javaDataType="4"/>
+      </feature>
+    </ownedElement>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>

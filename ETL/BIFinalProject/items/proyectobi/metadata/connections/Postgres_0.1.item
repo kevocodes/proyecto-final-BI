@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore" xmlns:relational="http://www.talend.org/cwm/resource/relational/2010">
+  <TalendMetadata:DatabaseConnection xmi:id="_l216ABAmEe6Zeevi2EGE-Q" name="Postgres" id="_M1i_wBAmEe6Zeevi2EGE-Q" label="Postgres" dataPackage="_l4_2IBAmEe6Zeevi2EGE-Q" DatabaseType="PostgreSQL" DriverClass="org.postgresql.Driver" URL="jdbc:postgresql://localhost:5432/company?" dbVersionString="V9_X" Port="5432" Username="Username" Password="enc:system.encryption.key.v1:j70UPRGKigR2DQIsT5aNGUwk02kaZTsHeWfA9epFOvgeHWh4sw==" ServerName="localhost" DatasourceName="" FileFieldName="" SID="company" SqlSynthax="" StringQuote="" NullChar="" DbmsId="postgres_id" ProductId="POSTGRESQL" AdditionalParams="" StandardSQL="true" SQLMode="false" UiSchema="detail">
+    <taggedValue xmi:id="_l216ARAmEe6Zeevi2EGE-Q" tag="Is Conn Need Reload" value="false"/>
+    <taggedValue xmi:id="_l2_D8BAmEe6Zeevi2EGE-Q" tag="package filter" value=""/>
+    <taggedValue xmi:id="_l3I08BAmEe6Zeevi2EGE-Q" tag="Status" value=""/>
+    <taggedValue xmi:id="_l3I08RAmEe6Zeevi2EGE-Q" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_l3I08hAmEe6Zeevi2EGE-Q" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_l3I08xAmEe6Zeevi2EGE-Q" tag="Description" value=""/>
+    <taggedValue xmi:id="_l3I09BAmEe6Zeevi2EGE-Q" tag="Author" value=""/>
+    <taggedValue xmi:id="_l3I09RAmEe6Zeevi2EGE-Q" tag="otherParameter"/>
+    <taggedValue xmi:id="_l3rngBAmEe6Zeevi2EGE-Q" tag="DB ProductName" value="PostgreSQL"/>
+    <taggedValue xmi:id="_l3rngRAmEe6Zeevi2EGE-Q" tag="DB ProductVersion" value="15.3 (Debian 15.3-1.pgdg120+1)"/>
+    <taggedValue xmi:id="_l3rnghAmEe6Zeevi2EGE-Q" tag="DB IdentifierQuoteString" value="&quot;"/>
+    <parameters xmi:id="_l216AhAmEe6Zeevi2EGE-Q" key="CONN_PARA_KEY_USERNAME" value="Username"/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_l4_2IBAmEe6Zeevi2EGE-Q" name="company" dataManager="_l216ABAmEe6Zeevi2EGE-Q">
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_l5AdMBAmEe6Zeevi2EGE-Q" name="detail">
+      <ownedElement xsi:type="relational:TdTable" xmi:id="_7ScNABAzEe6tgMOvw3V1Gw" name="flight" id="_7Sa-4BAzEe6tgMOvw3V1Gw" label="flight" tableType="TABLE">
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNARAzEe6tgMOvw3V1Gw" name="id" label="id" length="10" sourceType="SERIAL" talendType="id_Integer" key="true" nullable="false">
+          <taggedValue xmi:id="_7ScNAhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNAxAzEe6tgMOvw3V1Gw" body="nextval('detail.flight_id_seq'::regclass)" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNBBAzEe6tgMOvw3V1Gw" name="SERIAL" numericPrecisionRadix="10" javaDataType="4"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNBRAzEe6tgMOvw3V1Gw" name="airplane" label="airplane" length="10" sourceType="INT4" talendType="id_Integer" nullable="false">
+          <taggedValue xmi:id="_7ScNBhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNBxAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNCBAzEe6tgMOvw3V1Gw" name="INT4" numericPrecisionRadix="10" javaDataType="4"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNCRAzEe6tgMOvw3V1Gw" name="origin" label="origin" length="3" sourceType="VARCHAR" talendType="id_String" nullable="false">
+          <taggedValue xmi:id="_7ScNChAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNCxAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNDBAzEe6tgMOvw3V1Gw" name="VARCHAR" numericPrecisionRadix="10" javaDataType="12"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNDRAzEe6tgMOvw3V1Gw" name="destination" label="destination" length="3" sourceType="VARCHAR" talendType="id_String" nullable="false">
+          <taggedValue xmi:id="_7ScNDhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNDxAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNEBAzEe6tgMOvw3V1Gw" name="VARCHAR" numericPrecisionRadix="10" javaDataType="12"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNERAzEe6tgMOvw3V1Gw" name="departure" label="departure" length="29" precision="6" sourceType="TIMESTAMP" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;">
+          <taggedValue xmi:id="_7ScNEhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNExAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNFBAzEe6tgMOvw3V1Gw" name="TIMESTAMP" numericPrecision="6" numericPrecisionRadix="10" javaDataType="93" nullable="columnNullable"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNFRAzEe6tgMOvw3V1Gw" name="arrival" label="arrival" length="29" precision="6" sourceType="TIMESTAMP" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;">
+          <taggedValue xmi:id="_7ScNFhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNFxAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNGBAzEe6tgMOvw3V1Gw" name="TIMESTAMP" numericPrecision="6" numericPrecisionRadix="10" javaDataType="93" nullable="columnNullable"/>
+        </feature>
+        <feature xsi:type="relational:TdColumn" xmi:id="_7ScNGRAzEe6tgMOvw3V1Gw" name="flightmiles" label="flightmiles" length="131089" sourceType="NUMERIC" talendType="id_BigDecimal">
+          <taggedValue xmi:id="_7ScNGhAzEe6tgMOvw3V1Gw" tag="Comment" value=""/>
+          <initialValue xsi:type="relational:TdExpression" xmi:id="_7ScNGxAzEe6tgMOvw3V1Gw" language="COLUMN_DEF"/>
+          <sqlDataType xmi:id="_7ScNHBAzEe6tgMOvw3V1Gw" name="NUMERIC" numericPrecisionRadix="10" javaDataType="2" nullable="columnNullable"/>
+        </feature>
+      </ownedElement>
+    </ownedElement>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>

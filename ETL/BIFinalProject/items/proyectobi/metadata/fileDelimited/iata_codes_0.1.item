@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_2Jgc8RA2Ee6tgMOvw3V1Gw" name="iata_codes" id="_2Jgc8BA2Ee6tgMOvw3V1Gw" dataPackage="_2Jgc8hA2Ee6tgMOvw3V1Gw" Server="Localhost 127.0.0.1" FilePath="C:/IATA Codes.csv" Format="WINDOWS" Encoding="UTF-8" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FooterValue="0" LimitValue="" FirstLineCaption="true" EscapeChar="&quot;\&quot;&quot;" TextEnclosure="&quot;\&quot;&quot;" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_2Jgc8hA2Ee6tgMOvw3V1Gw" name="default" dataManager="_2Jgc8RA2Ee6tgMOvw3V1Gw">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_2Jgc8xA2Ee6tgMOvw3V1Gw" id="_qOIQEBA2Ee6tgMOvw3V1Gw" label="iata_codes">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_2Jgc9BA2Ee6tgMOvw3V1Gw" label="Location" length="44" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_2Jgc9RA2Ee6tgMOvw3V1Gw" label="Country" length="20" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_2Jgc9hA2Ee6tgMOvw3V1Gw" label="Code" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

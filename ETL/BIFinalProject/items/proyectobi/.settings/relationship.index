@@ -1,0 +1,70 @@
+[ {
+  "baseItem" : {
+    "id" : "_JbsIYBfDEe6vGauyctiaEQ",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_2Jgc8BA2Ee6tgMOvw3V1Gw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_M1i_wBAmEe6Zeevi2EGE-Q",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_dd2tcBA0Ee6tgMOvw3V1Gw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_2Jgc8BA2Ee6tgMOvw3V1Gw - iata_codes",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_M1i_wBAmEe6Zeevi2EGE-Q - flight",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_dd2tcBA0Ee6tgMOvw3V1Gw - airplane",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+}, {
+  "baseItem" : {
+    "id" : "_QKNNUGZ8EeWm5YvsrIoYzQ",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ ]
+}, {
+  "baseItem" : {
+    "id" : "__bmjIBAlEe6Zeevi2EGE-Q",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_2Jgc8BA2Ee6tgMOvw3V1Gw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_M1i_wBAmEe6Zeevi2EGE-Q",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_dd2tcBA0Ee6tgMOvw3V1Gw",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_2Jgc8BA2Ee6tgMOvw3V1Gw - iata_codes",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_M1i_wBAmEe6Zeevi2EGE-Q - flight",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_dd2tcBA0Ee6tgMOvw3V1Gw - airplane",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+} ]
