@@ -330,6 +330,15 @@ private class TalendException extends Exception {
 					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tFileOutputDelimited_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tDBInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -399,6 +408,36 @@ private class TalendException extends Exception {
 					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tSortRow_1_SortOut_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+							tSortRow_1_SortIn_error(exception, errorComponent, globalMap);
+						
+						}
+					
+			public void tSortRow_1_SortIn_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tSortRow_2_SortOut_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+							tSortRow_2_SortIn_error(exception, errorComponent, globalMap);
+						
+						}
+					
+			public void tSortRow_2_SortIn_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tDBInput_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
@@ -410,6 +449,530 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 
 
 
+
+public static class row8Struct implements routines.system.IPersistableRow<row8Struct> {
+    final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
+    static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
+
+	
+			    public String aeroplano;
+
+				public String getAeroplano () {
+					return this.aeroplano;
+				}
+				
+			    public String origen;
+
+				public String getOrigen () {
+					return this.origen;
+				}
+				
+			    public String destino;
+
+				public String getDestino () {
+					return this.destino;
+				}
+				
+			    public BigDecimal millas;
+
+				public BigDecimal getMillas () {
+					return this.millas;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("aeroplano="+aeroplano);
+		sb.append(",origen="+origen);
+		sb.append(",destino="+destino);
+		sb.append(",millas="+String.valueOf(millas));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row8Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class OnRowsEndStructtSortRow_2 implements routines.system.IPersistableRow<OnRowsEndStructtSortRow_2> {
+    final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
+    static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
+
+	
+			    public String aeroplano;
+
+				public String getAeroplano () {
+					return this.aeroplano;
+				}
+				
+			    public String origen;
+
+				public String getOrigen () {
+					return this.origen;
+				}
+				
+			    public String destino;
+
+				public String getDestino () {
+					return this.destino;
+				}
+				
+			    public BigDecimal millas;
+
+				public BigDecimal getMillas () {
+					return this.millas;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("aeroplano="+aeroplano);
+		sb.append(",origen="+origen);
+		sb.append(",destino="+destino);
+		sb.append(",millas="+String.valueOf(millas));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(OnRowsEndStructtSortRow_2 other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
 
 public static class row6Struct implements routines.system.IPersistableRow<row6Struct> {
     final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
@@ -673,6 +1236,530 @@ public static class row6Struct implements routines.system.IPersistableRow<row6St
 
 }
 
+public static class row7Struct implements routines.system.IPersistableRow<row7Struct> {
+    final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
+    static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
+
+	
+			    public String aeroplano;
+
+				public String getAeroplano () {
+					return this.aeroplano;
+				}
+				
+			    public String origen;
+
+				public String getOrigen () {
+					return this.origen;
+				}
+				
+			    public String destino;
+
+				public String getDestino () {
+					return this.destino;
+				}
+				
+			    public BigDecimal millas;
+
+				public BigDecimal getMillas () {
+					return this.millas;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("aeroplano="+aeroplano);
+		sb.append(",origen="+origen);
+		sb.append(",destino="+destino);
+		sb.append(",millas="+String.valueOf(millas));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row7Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class OnRowsEndStructtSortRow_1 implements routines.system.IPersistableRow<OnRowsEndStructtSortRow_1> {
+    final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
+    static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
+
+	
+			    public String aeroplano;
+
+				public String getAeroplano () {
+					return this.aeroplano;
+				}
+				
+			    public String origen;
+
+				public String getOrigen () {
+					return this.origen;
+				}
+				
+			    public String destino;
+
+				public String getDestino () {
+					return this.destino;
+				}
+				
+			    public BigDecimal millas;
+
+				public BigDecimal getMillas () {
+					return this.millas;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("aeroplano="+aeroplano);
+		sb.append(",origen="+origen);
+		sb.append(",destino="+destino);
+		sb.append(",millas="+String.valueOf(millas));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(OnRowsEndStructtSortRow_1 other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
 public static class FlightDetailsMappedStruct implements routines.system.IPersistableRow<FlightDetailsMappedStruct> {
     final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
     static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
@@ -904,6 +1991,268 @@ public static class FlightDetailsMappedStruct implements routines.system.IPersis
      * Compare keys
      */
     public int compareTo(FlightDetailsMappedStruct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class RejectedStruct implements routines.system.IPersistableRow<RejectedStruct> {
+    final static byte[] commonByteArrayLock_PROYECTOBI_BIFinalProject = new byte[0];
+    static byte[] commonByteArray_PROYECTOBI_BIFinalProject = new byte[0];
+
+	
+			    public String aeroplano;
+
+				public String getAeroplano () {
+					return this.aeroplano;
+				}
+				
+			    public String origen;
+
+				public String getOrigen () {
+					return this.origen;
+				}
+				
+			    public String destino;
+
+				public String getDestino () {
+					return this.destino;
+				}
+				
+			    public BigDecimal millas;
+
+				public BigDecimal getMillas () {
+					return this.millas;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROYECTOBI_BIFinalProject.length) {
+				if(length < 1024 && commonByteArray_PROYECTOBI_BIFinalProject.length == 0) {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[1024];
+				} else {
+   					commonByteArray_PROYECTOBI_BIFinalProject = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROYECTOBI_BIFinalProject, 0, length);
+			strReturn = new String(commonByteArray_PROYECTOBI_BIFinalProject, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROYECTOBI_BIFinalProject) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.aeroplano = readString(dis);
+					
+					this.origen = readString(dis);
+					
+					this.destino = readString(dis);
+					
+						this.millas = (BigDecimal) dis.readObject();
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+			} catch(ClassNotFoundException eCNFE) {
+				 throw new RuntimeException(eCNFE);
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.aeroplano,dos);
+					
+					// String
+				
+						writeString(this.origen,dos);
+					
+					// String
+				
+						writeString(this.destino,dos);
+					
+					// BigDecimal
+				
+       			    	dos.writeObject(this.millas);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("aeroplano="+aeroplano);
+		sb.append(",origen="+origen);
+		sb.append(",destino="+destino);
+		sb.append(",millas="+String.valueOf(millas));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(RejectedStruct other) {
 
 		int returnValue = -1;
 		
@@ -2535,7 +3884,10 @@ public void tDBInput_2Process(final java.util.Map<String, Object> globalMap) thr
 flightsDetailsStruct flightsDetails = new flightsDetailsStruct();
 row3Struct row3 = new row3Struct();
 FlightDetailsMappedStruct FlightDetailsMapped = new FlightDetailsMappedStruct();
-FlightDetailsMappedStruct row6 = FlightDetailsMapped;
+row7Struct row7 = new row7Struct();
+row7Struct row6 = row7;
+RejectedStruct Rejected = new RejectedStruct();
+row8Struct row8 = new row8Struct();
 
 
 
@@ -2879,7 +4231,7 @@ flightsDetailsStruct flightsDetails_tmp = new flightsDetailsStruct();
 				String dbUser_tDBInput_2 = "Username";
 				
 				 
-	final String decryptedPassword_tDBInput_2 = routines.system.PasswordEncryptUtil.decryptPassword("enc:routine.encryption.key.v1:WZi+5cOA7o1ZMx+jHqranp3h0t418bgYcLQkDccwUzeODMbASg==");
+	final String decryptedPassword_tDBInput_2 = routines.system.PasswordEncryptUtil.decryptPassword("enc:routine.encryption.key.v1:uXV8r3eLkxUwLNi7RxDn4qXmvvqpe7hkmRGezocry0jt1y1EGw==");
 				
 				String dbPwd_tDBInput_2 = decryptedPassword_tDBInput_2;
 				
@@ -3524,179 +4876,141 @@ end_Hash.put("tAggregateRow_1_AGGOUT", System.currentTimeMillis());
 
 
 
-
 	
 	/**
-	 * [tLogRow_1 begin ] start
+	 * [tSortRow_1_SortOut begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tLogRow_1", false);
-		start_Hash.put("tLogRow_1", System.currentTimeMillis());
+		ok_Hash.put("tSortRow_1_SortOut", false);
+		start_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
 		
 	
-	currentComponent="tLogRow_1";
-
+		currentVirtualComponent = "tSortRow_1";
 	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row6");
-					}
-				
-		int tos_count_tLogRow_1 = 0;
-		
-
-	///////////////////////
-	
-		final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = " | ";
-		java.io.PrintStream consoleOut_tLogRow_1 = null;
-                    
-                    
-                StringBuilder sbHeader_tLogRow_1 = new StringBuilder();
-				
-				sbHeader_tLogRow_1.append("aeroplano");
-				
-    			sbHeader_tLogRow_1.append("\t");
-				
-				sbHeader_tLogRow_1.append("origen");
-				
-    			sbHeader_tLogRow_1.append("\t");
-				
-				sbHeader_tLogRow_1.append("destino");
-				
-    			sbHeader_tLogRow_1.append("\t");
-				
-				sbHeader_tLogRow_1.append("millas");
-				
-                   
-                    if (globalMap.get("tLogRow_CONSOLE")!=null)
-                    {
-                    	consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
-                    }
-                    else
-                    {
-                    	consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
-                    	globalMap.put("tLogRow_CONSOLE",consoleOut_tLogRow_1);
-                    }
-                    consoleOut_tLogRow_1.println(sbHeader_tLogRow_1.toString());
-                    consoleOut_tLogRow_1.flush();
-                    	
-
- 		StringBuilder strBuffer_tLogRow_1 = null;
-		int nb_line_tLogRow_1 = 0;
-///////////////////////    			
-
-
-
- 
-
-
-
-/**
- * [tLogRow_1 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tFileOutputDelimited_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tFileOutputDelimited_1", false);
-		start_Hash.put("tFileOutputDelimited_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tFileOutputDelimited_1";
+	currentComponent="tSortRow_1_SortOut";
 
 	
 					if(execStat) {
 						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"FlightDetailsMapped");
 					}
 				
-		int tos_count_tFileOutputDelimited_1 = 0;
+		int tos_count_tSortRow_1_SortOut = 0;
 		
 
-String fileName_tFileOutputDelimited_1 = "";
-    fileName_tFileOutputDelimited_1 = (new java.io.File("C:/Program Files (x86)/TOS_DI-8.0.1/studio/workspace/total_de_millas_voladas_por_vuelo.csv")).getAbsolutePath().replace("\\","/");
-    String fullName_tFileOutputDelimited_1 = null;
-    String extension_tFileOutputDelimited_1 = null;
-    String directory_tFileOutputDelimited_1 = null;
-    if((fileName_tFileOutputDelimited_1.indexOf("/") != -1)) {
-        if(fileName_tFileOutputDelimited_1.lastIndexOf(".") < fileName_tFileOutputDelimited_1.lastIndexOf("/")) {
-            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1;
-            extension_tFileOutputDelimited_1 = "";
-        } else {
-            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("."));
-            extension_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(fileName_tFileOutputDelimited_1.lastIndexOf("."));
-        }
-        directory_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("/"));
-    } else {
-        if(fileName_tFileOutputDelimited_1.lastIndexOf(".") != -1) {
-            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("."));
-            extension_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(fileName_tFileOutputDelimited_1.lastIndexOf("."));
-        } else {
-            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1;
-            extension_tFileOutputDelimited_1 = "";
-        }
-        directory_tFileOutputDelimited_1 = "";
-    }
-    boolean isFileGenerated_tFileOutputDelimited_1 = true;
-    java.io.File filetFileOutputDelimited_1 = new java.io.File(fileName_tFileOutputDelimited_1);
-    globalMap.put("tFileOutputDelimited_1_FILE_NAME",fileName_tFileOutputDelimited_1);
-            int nb_line_tFileOutputDelimited_1 = 0;
-            int splitedFileNo_tFileOutputDelimited_1 = 0;
-            int currentRow_tFileOutputDelimited_1 = 0;
 
-            final String OUT_DELIM_tFileOutputDelimited_1 = /** Start field tFileOutputDelimited_1:FIELDSEPARATOR */";"/** End field tFileOutputDelimited_1:FIELDSEPARATOR */;
+class ComparableFlightDetailsMappedStruct extends FlightDetailsMappedStruct implements Comparable<ComparableFlightDetailsMappedStruct> {
+	
+	public int compareTo(ComparableFlightDetailsMappedStruct other) {
 
-            final String OUT_DELIM_ROWSEP_tFileOutputDelimited_1 = /** Start field tFileOutputDelimited_1:ROWSEPARATOR */"\n"/** End field tFileOutputDelimited_1:ROWSEPARATOR */;
+		if(this.aeroplano == null && other.aeroplano != null){
+			return -1;
+						
+		}else if(this.aeroplano != null && other.aeroplano == null){
+			return 1;
+						
+		}else if(this.aeroplano != null && other.aeroplano != null){
+			if(!this.aeroplano.equals(other.aeroplano)){
+				return this.aeroplano.compareTo(other.aeroplano);
+			}
+		}
+		if(this.origen == null && other.origen != null){
+			return -1;
+						
+		}else if(this.origen != null && other.origen == null){
+			return 1;
+						
+		}else if(this.origen != null && other.origen != null){
+			if(!this.origen.equals(other.origen)){
+				return this.origen.compareTo(other.origen);
+			}
+		}
+		if(this.destino == null && other.destino != null){
+			return -1;
+						
+		}else if(this.destino != null && other.destino == null){
+			return 1;
+						
+		}else if(this.destino != null && other.destino != null){
+			if(!this.destino.equals(other.destino)){
+				return this.destino.compareTo(other.destino);
+			}
+		}
+		return 0;
+	}
+}
 
-                    //create directory only if not exists
-                    if(directory_tFileOutputDelimited_1 != null && directory_tFileOutputDelimited_1.trim().length() != 0) {
-                        java.io.File dir_tFileOutputDelimited_1 = new java.io.File(directory_tFileOutputDelimited_1);
-                        if(!dir_tFileOutputDelimited_1.exists()) {
-                            dir_tFileOutputDelimited_1.mkdirs();
-                        }
-                    }
+java.util.List<ComparableFlightDetailsMappedStruct> list_tSortRow_1_SortOut = new java.util.ArrayList<ComparableFlightDetailsMappedStruct>();
 
-                        //routines.system.Row
-                        java.io.Writer outtFileOutputDelimited_1 = null;
-
-                        java.io.File fileToDelete_tFileOutputDelimited_1 = new java.io.File(fileName_tFileOutputDelimited_1);
-                        if(fileToDelete_tFileOutputDelimited_1.exists()) {
-                            fileToDelete_tFileOutputDelimited_1.delete();
-                        }
-                        outtFileOutputDelimited_1 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
-                        new java.io.FileOutputStream(fileName_tFileOutputDelimited_1, false),"ISO-8859-15"));
-                                    if(filetFileOutputDelimited_1.length()==0){
-                                        outtFileOutputDelimited_1.write("aeroplano");
-                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
-                                        outtFileOutputDelimited_1.write("origen");
-                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
-                                        outtFileOutputDelimited_1.write("destino");
-                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
-                                        outtFileOutputDelimited_1.write("millas");
-                                        outtFileOutputDelimited_1.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
-                                        outtFileOutputDelimited_1.flush();
-                                    }
-
-
-        resourceMap.put("out_tFileOutputDelimited_1", outtFileOutputDelimited_1);
-resourceMap.put("nb_line_tFileOutputDelimited_1", nb_line_tFileOutputDelimited_1);
 
  
 
 
 
 /**
- * [tFileOutputDelimited_1 begin ] stop
+ * [tSortRow_1_SortOut begin ] stop
+ */
+
+
+
+
+	
+	/**
+	 * [tSortRow_2_SortOut begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tSortRow_2_SortOut", false);
+		start_Hash.put("tSortRow_2_SortOut", System.currentTimeMillis());
+		
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"Rejected");
+					}
+				
+		int tos_count_tSortRow_2_SortOut = 0;
+		
+
+
+class ComparableRejectedStruct extends RejectedStruct implements Comparable<ComparableRejectedStruct> {
+	
+	public int compareTo(ComparableRejectedStruct other) {
+
+		if(this.aeroplano == null && other.aeroplano != null){
+			return -1;
+						
+		}else if(this.aeroplano != null && other.aeroplano == null){
+			return 1;
+						
+		}else if(this.aeroplano != null && other.aeroplano != null){
+			if(!this.aeroplano.equals(other.aeroplano)){
+				return this.aeroplano.compareTo(other.aeroplano);
+			}
+		}
+		return 0;
+	}
+}
+
+java.util.List<ComparableRejectedStruct> list_tSortRow_2_SortOut = new java.util.ArrayList<ComparableRejectedStruct>();
+
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortOut begin ] stop
  */
 
 
@@ -3761,6 +5075,7 @@ Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
 // ###############################
 // # Outputs initialization
 FlightDetailsMappedStruct FlightDetailsMapped_tmp = new FlightDetailsMappedStruct();
+RejectedStruct Rejected_tmp = new RejectedStruct();
 // ###############################
 
         
@@ -3947,22 +5262,12 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 	  							
 
  								
-								  
-								  if(!tHash_Lookup_row4.hasNext()) { // G_TM_M_090
-
-  								
 		  				
-	  								
-			  							rejectedInnerJoin_tMap_2 = true;
 	  								
 						
 									
   									  		
  								
-								  
-								  } // G_TM_M_090
-
-  								
 
 
 
@@ -4118,16 +5423,35 @@ Var__tMap_2__Struct Var = Var__tMap_2;// ###############################
         // # Output tables
 
 FlightDetailsMapped = null;
+Rejected = null;
 
-if(!rejectedInnerJoin_tMap_2 ) {
+boolean rejected_tMap_2 = true;
 
 // # Output table : 'FlightDetailsMapped'
+// # Filter conditions 
+if( 
+
+(row4.Location != null) &&  (row5.Location != null)
+
+ ) {
+rejected_tMap_2 = false;
 FlightDetailsMapped_tmp.aeroplano = row3.aeroplano ;
 FlightDetailsMapped_tmp.origen = row4.Location ;
 FlightDetailsMapped_tmp.destino = row5.Location ;
 FlightDetailsMapped_tmp.millas = row3.millas ;
 FlightDetailsMapped = FlightDetailsMapped_tmp;
-}  // closing inner join bracket (2)
+} // closing filter/reject
+// ###### START REJECTS ##### 
+
+// # Output reject table : 'Rejected'
+// # Filter conditions 
+if( rejected_tMap_2 ) {
+Rejected_tmp.aeroplano = row3.aeroplano  ;
+Rejected_tmp.origen = row4.Location  ;
+Rejected_tmp.destino = row5.Location  ;
+Rejected_tmp.millas = row3.millas  ;
+Rejected = Rejected_tmp;
+} // closing filter/reject
 // ###############################
 
 } // end of Var scope
@@ -4178,6 +5502,627 @@ if(FlightDetailsMapped != null) {
 
 	
 	/**
+	 * [tSortRow_1_SortOut main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortOut";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"FlightDetailsMapped"
+						
+						);
+					}
+					
+
+
+
+	ComparableFlightDetailsMappedStruct arrayRowtSortRow_1_SortOut = new ComparableFlightDetailsMappedStruct();
+
+	arrayRowtSortRow_1_SortOut.aeroplano = FlightDetailsMapped.aeroplano;
+	arrayRowtSortRow_1_SortOut.origen = FlightDetailsMapped.origen;
+	arrayRowtSortRow_1_SortOut.destino = FlightDetailsMapped.destino;
+	arrayRowtSortRow_1_SortOut.millas = FlightDetailsMapped.millas;	
+	list_tSortRow_1_SortOut.add(arrayRowtSortRow_1_SortOut);
+
+ 
+
+
+	tos_count_tSortRow_1_SortOut++;
+
+/**
+ * [tSortRow_1_SortOut main ] stop
+ */
+	
+	/**
+	 * [tSortRow_1_SortOut process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortOut process_data_begin ] stop
+ */
+	
+	/**
+	 * [tSortRow_1_SortOut process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortOut process_data_end ] stop
+ */
+
+} // End of branch "FlightDetailsMapped"
+
+
+
+
+// Start of branch "Rejected"
+if(Rejected != null) { 
+
+
+
+	
+	/**
+	 * [tSortRow_2_SortOut main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"Rejected"
+						
+						);
+					}
+					
+
+
+
+	ComparableRejectedStruct arrayRowtSortRow_2_SortOut = new ComparableRejectedStruct();
+
+	arrayRowtSortRow_2_SortOut.aeroplano = Rejected.aeroplano;
+	arrayRowtSortRow_2_SortOut.origen = Rejected.origen;
+	arrayRowtSortRow_2_SortOut.destino = Rejected.destino;
+	arrayRowtSortRow_2_SortOut.millas = Rejected.millas;	
+	list_tSortRow_2_SortOut.add(arrayRowtSortRow_2_SortOut);
+
+ 
+
+
+	tos_count_tSortRow_2_SortOut++;
+
+/**
+ * [tSortRow_2_SortOut main ] stop
+ */
+	
+	/**
+	 * [tSortRow_2_SortOut process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortOut process_data_begin ] stop
+ */
+	
+	/**
+	 * [tSortRow_2_SortOut process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortOut process_data_end ] stop
+ */
+
+} // End of branch "Rejected"
+
+
+
+
+	
+	/**
+	 * [tMap_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_2 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tAggregateRow_1_AGGIN process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN process_data_end ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGIN end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+} // G_AggR_600
+
+ 
+
+ok_Hash.put("tAggregateRow_1_AGGIN", true);
+end_Hash.put("tAggregateRow_1_AGGIN", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN end ] stop
+ */
+
+	
+	/**
+	 * [tMap_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+					if(tHash_Lookup_row4 != null) {
+						tHash_Lookup_row4.endGet();
+					}
+					globalMap.remove( "tHash_Lookup_row4" );
+
+					
+					
+				
+					if(tHash_Lookup_row5 != null) {
+						tHash_Lookup_row5.endGet();
+					}
+					globalMap.remove( "tHash_Lookup_row5" );
+
+					
+					
+				
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_2", true);
+end_Hash.put("tMap_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_2 end ] stop
+ */
+
+	
+	/**
+	 * [tSortRow_1_SortOut end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortOut";
+
+	
+
+FlightDetailsMappedStruct[] array_tSortRow_1_SortOut = list_tSortRow_1_SortOut.toArray(new ComparableFlightDetailsMappedStruct[0]);
+
+java.util.Arrays.sort(array_tSortRow_1_SortOut);
+
+globalMap.put("tSortRow_1",array_tSortRow_1_SortOut);
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"FlightDetailsMapped");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tSortRow_1_SortOut", true);
+end_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tSortRow_1_SortOut end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tLogRow_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tLogRow_1", false);
+		start_Hash.put("tLogRow_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tLogRow_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row6");
+					}
+				
+		int tos_count_tLogRow_1 = 0;
+		
+
+	///////////////////////
+	
+		final String OUTPUT_FIELD_SEPARATOR_tLogRow_1 = " | ";
+		java.io.PrintStream consoleOut_tLogRow_1 = null;
+                    
+                    
+                StringBuilder sbHeader_tLogRow_1 = new StringBuilder();
+				
+				sbHeader_tLogRow_1.append("aeroplano");
+				
+    			sbHeader_tLogRow_1.append("\t");
+				
+				sbHeader_tLogRow_1.append("origen");
+				
+    			sbHeader_tLogRow_1.append("\t");
+				
+				sbHeader_tLogRow_1.append("destino");
+				
+    			sbHeader_tLogRow_1.append("\t");
+				
+				sbHeader_tLogRow_1.append("millas");
+				
+                   
+                    if (globalMap.get("tLogRow_CONSOLE")!=null)
+                    {
+                    	consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+                    }
+                    else
+                    {
+                    	consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
+                    	globalMap.put("tLogRow_CONSOLE",consoleOut_tLogRow_1);
+                    }
+                    consoleOut_tLogRow_1.println(sbHeader_tLogRow_1.toString());
+                    consoleOut_tLogRow_1.flush();
+                    	
+
+ 		StringBuilder strBuffer_tLogRow_1 = null;
+		int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+
+
+ 
+
+
+
+/**
+ * [tLogRow_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tFileOutputDelimited_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tFileOutputDelimited_1", false);
+		start_Hash.put("tFileOutputDelimited_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tFileOutputDelimited_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row7");
+					}
+				
+		int tos_count_tFileOutputDelimited_1 = 0;
+		
+
+String fileName_tFileOutputDelimited_1 = "";
+    fileName_tFileOutputDelimited_1 = (new java.io.File("C:/Program Files (x86)/TOS_DI-8.0.1/studio/workspace/total_de_millas_voladas_por_vuelo.csv")).getAbsolutePath().replace("\\","/");
+    String fullName_tFileOutputDelimited_1 = null;
+    String extension_tFileOutputDelimited_1 = null;
+    String directory_tFileOutputDelimited_1 = null;
+    if((fileName_tFileOutputDelimited_1.indexOf("/") != -1)) {
+        if(fileName_tFileOutputDelimited_1.lastIndexOf(".") < fileName_tFileOutputDelimited_1.lastIndexOf("/")) {
+            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1;
+            extension_tFileOutputDelimited_1 = "";
+        } else {
+            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("."));
+            extension_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(fileName_tFileOutputDelimited_1.lastIndexOf("."));
+        }
+        directory_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("/"));
+    } else {
+        if(fileName_tFileOutputDelimited_1.lastIndexOf(".") != -1) {
+            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(0, fileName_tFileOutputDelimited_1.lastIndexOf("."));
+            extension_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1.substring(fileName_tFileOutputDelimited_1.lastIndexOf("."));
+        } else {
+            fullName_tFileOutputDelimited_1 = fileName_tFileOutputDelimited_1;
+            extension_tFileOutputDelimited_1 = "";
+        }
+        directory_tFileOutputDelimited_1 = "";
+    }
+    boolean isFileGenerated_tFileOutputDelimited_1 = true;
+    java.io.File filetFileOutputDelimited_1 = new java.io.File(fileName_tFileOutputDelimited_1);
+    globalMap.put("tFileOutputDelimited_1_FILE_NAME",fileName_tFileOutputDelimited_1);
+            int nb_line_tFileOutputDelimited_1 = 0;
+            int splitedFileNo_tFileOutputDelimited_1 = 0;
+            int currentRow_tFileOutputDelimited_1 = 0;
+
+            final String OUT_DELIM_tFileOutputDelimited_1 = /** Start field tFileOutputDelimited_1:FIELDSEPARATOR */";"/** End field tFileOutputDelimited_1:FIELDSEPARATOR */;
+
+            final String OUT_DELIM_ROWSEP_tFileOutputDelimited_1 = /** Start field tFileOutputDelimited_1:ROWSEPARATOR */"\n"/** End field tFileOutputDelimited_1:ROWSEPARATOR */;
+
+                    //create directory only if not exists
+                    if(directory_tFileOutputDelimited_1 != null && directory_tFileOutputDelimited_1.trim().length() != 0) {
+                        java.io.File dir_tFileOutputDelimited_1 = new java.io.File(directory_tFileOutputDelimited_1);
+                        if(!dir_tFileOutputDelimited_1.exists()) {
+                            dir_tFileOutputDelimited_1.mkdirs();
+                        }
+                    }
+
+                        //routines.system.Row
+                        java.io.Writer outtFileOutputDelimited_1 = null;
+
+                        java.io.File fileToDelete_tFileOutputDelimited_1 = new java.io.File(fileName_tFileOutputDelimited_1);
+                        if(fileToDelete_tFileOutputDelimited_1.exists()) {
+                            fileToDelete_tFileOutputDelimited_1.delete();
+                        }
+                        outtFileOutputDelimited_1 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
+                        new java.io.FileOutputStream(fileName_tFileOutputDelimited_1, false),"ISO-8859-15"));
+                                    if(filetFileOutputDelimited_1.length()==0){
+                                        outtFileOutputDelimited_1.write("aeroplano");
+                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+                                        outtFileOutputDelimited_1.write("origen");
+                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+                                        outtFileOutputDelimited_1.write("destino");
+                                            outtFileOutputDelimited_1.write(OUT_DELIM_tFileOutputDelimited_1);
+                                        outtFileOutputDelimited_1.write("millas");
+                                        outtFileOutputDelimited_1.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
+                                        outtFileOutputDelimited_1.flush();
+                                    }
+
+
+        resourceMap.put("out_tFileOutputDelimited_1", outtFileOutputDelimited_1);
+resourceMap.put("nb_line_tFileOutputDelimited_1", nb_line_tFileOutputDelimited_1);
+
+ 
+
+
+
+/**
+ * [tFileOutputDelimited_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tSortRow_1_SortIn begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tSortRow_1_SortIn", false);
+		start_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
+		
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortIn";
+
+	
+		int tos_count_tSortRow_1_SortIn = 0;
+		
+
+
+FlightDetailsMappedStruct[] array_tSortRow_1_SortIn = (FlightDetailsMappedStruct[]) globalMap.remove("tSortRow_1");
+
+int nb_line_tSortRow_1_SortIn = 0;
+
+FlightDetailsMappedStruct current_tSortRow_1_SortIn = null;
+
+for(int i_tSortRow_1_SortIn = 0; i_tSortRow_1_SortIn < array_tSortRow_1_SortIn.length; i_tSortRow_1_SortIn++){
+	current_tSortRow_1_SortIn = array_tSortRow_1_SortIn[i_tSortRow_1_SortIn];
+	row7.aeroplano = current_tSortRow_1_SortIn.aeroplano;
+	row7.origen = current_tSortRow_1_SortIn.origen;
+	row7.destino = current_tSortRow_1_SortIn.destino;
+	row7.millas = current_tSortRow_1_SortIn.millas;
+	// increase number of line sorted
+	nb_line_tSortRow_1_SortIn++;
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortIn begin ] stop
+ */
+	
+	/**
+	 * [tSortRow_1_SortIn main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortIn";
+
+	
+
+ 
+
+
+	tos_count_tSortRow_1_SortIn++;
+
+/**
+ * [tSortRow_1_SortIn main ] stop
+ */
+	
+	/**
+	 * [tSortRow_1_SortIn process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortIn";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortIn process_data_begin ] stop
+ */
+
+	
+	/**
 	 * [tFileOutputDelimited_1 main ] start
 	 */
 
@@ -4191,7 +6136,7 @@ if(FlightDetailsMapped != null) {
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"FlightDetailsMapped"
+							,"row7"
 						
 						);
 					}
@@ -4199,27 +6144,27 @@ if(FlightDetailsMapped != null) {
 
 
                     StringBuilder sb_tFileOutputDelimited_1 = new StringBuilder();
-                            if(FlightDetailsMapped.aeroplano != null) {
+                            if(row7.aeroplano != null) {
                         sb_tFileOutputDelimited_1.append(
-                            FlightDetailsMapped.aeroplano
+                            row7.aeroplano
                         );
                             }
                             sb_tFileOutputDelimited_1.append(OUT_DELIM_tFileOutputDelimited_1);
-                            if(FlightDetailsMapped.origen != null) {
+                            if(row7.origen != null) {
                         sb_tFileOutputDelimited_1.append(
-                            FlightDetailsMapped.origen
+                            row7.origen
                         );
                             }
                             sb_tFileOutputDelimited_1.append(OUT_DELIM_tFileOutputDelimited_1);
-                            if(FlightDetailsMapped.destino != null) {
+                            if(row7.destino != null) {
                         sb_tFileOutputDelimited_1.append(
-                            FlightDetailsMapped.destino
+                            row7.destino
                         );
                             }
                             sb_tFileOutputDelimited_1.append(OUT_DELIM_tFileOutputDelimited_1);
-                            if(FlightDetailsMapped.millas != null) {
+                            if(row7.millas != null) {
                         sb_tFileOutputDelimited_1.append(
-                            FlightDetailsMapped.millas.setScale(0, java.math.RoundingMode.HALF_UP).toPlainString()
+                            row7.millas.setScale(0, java.math.RoundingMode.HALF_UP).toPlainString()
                         );
                             }
                     sb_tFileOutputDelimited_1.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_1);
@@ -4234,7 +6179,7 @@ if(FlightDetailsMapped != null) {
 
 
  
-     row6 = FlightDetailsMapped;
+     row6 = row7;
 
 
 	tos_count_tFileOutputDelimited_1++;
@@ -4444,21 +6389,20 @@ if(FlightDetailsMapped != null) {
  * [tFileOutputDelimited_1 process_data_end ] stop
  */
 
-} // End of branch "FlightDetailsMapped"
-
-
 
 
 	
 	/**
-	 * [tMap_2 process_data_end ] start
+	 * [tSortRow_1_SortIn process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortIn";
 
 	
 
@@ -4467,114 +6411,38 @@ if(FlightDetailsMapped != null) {
 
 
 /**
- * [tMap_2 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tAggregateRow_1_AGGIN process_data_end ] start
-	 */
-
-	
-
-	
-	
-		currentVirtualComponent = "tAggregateRow_1";
-	
-	currentComponent="tAggregateRow_1_AGGIN";
-
-	
-
- 
-
-
-
-/**
- * [tAggregateRow_1_AGGIN process_data_end ] stop
+ * [tSortRow_1_SortIn process_data_end ] stop
  */
 	
 	/**
-	 * [tAggregateRow_1_AGGIN end ] start
+	 * [tSortRow_1_SortIn end ] start
 	 */
 
 	
 
 	
 	
-		currentVirtualComponent = "tAggregateRow_1";
+		currentVirtualComponent = "tSortRow_1";
 	
-	currentComponent="tAggregateRow_1_AGGIN";
+	currentComponent="tSortRow_1_SortIn";
 
 	
 
-} // G_AggR_600
+
+}
+
+globalMap.put("tSortRow_1_SortIn_NB_LINE",nb_line_tSortRow_1_SortIn);
 
  
 
-ok_Hash.put("tAggregateRow_1_AGGIN", true);
-end_Hash.put("tAggregateRow_1_AGGIN", System.currentTimeMillis());
+ok_Hash.put("tSortRow_1_SortIn", true);
+end_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
 
 
 
 
 /**
- * [tAggregateRow_1_AGGIN end ] stop
- */
-
-	
-	/**
-	 * [tMap_2 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_2";
-
-	
-
-
-// ###############################
-// # Lookup hashes releasing
-					if(tHash_Lookup_row4 != null) {
-						tHash_Lookup_row4.endGet();
-					}
-					globalMap.remove( "tHash_Lookup_row4" );
-
-					
-					
-				
-					if(tHash_Lookup_row5 != null) {
-						tHash_Lookup_row5.endGet();
-					}
-					globalMap.remove( "tHash_Lookup_row5" );
-
-					
-					
-				
-// ###############################      
-
-
-
-
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
-			  	}
-			  	
- 
-
-ok_Hash.put("tMap_2", true);
-end_Hash.put("tMap_2", System.currentTimeMillis());
-
-
-
-
-/**
- * [tMap_2 end ] stop
+ * [tSortRow_1_SortIn end ] stop
  */
 
 	
@@ -4608,7 +6476,7 @@ end_Hash.put("tMap_2", System.currentTimeMillis());
 	
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"FlightDetailsMapped");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row7");
 			  	}
 			  	
  
@@ -4671,6 +6539,459 @@ end_Hash.put("tLogRow_1", System.currentTimeMillis());
 
 
 
+	
+	/**
+	 * [tSortRow_2_SortOut end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+
+RejectedStruct[] array_tSortRow_2_SortOut = list_tSortRow_2_SortOut.toArray(new ComparableRejectedStruct[0]);
+
+java.util.Arrays.sort(array_tSortRow_2_SortOut);
+
+globalMap.put("tSortRow_2",array_tSortRow_2_SortOut);
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"Rejected");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tSortRow_2_SortOut", true);
+end_Hash.put("tSortRow_2_SortOut", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tSortRow_2_SortOut end ] stop
+ */
+
+
+	
+	/**
+	 * [tFileOutputDelimited_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tFileOutputDelimited_3", false);
+		start_Hash.put("tFileOutputDelimited_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row8");
+					}
+				
+		int tos_count_tFileOutputDelimited_3 = 0;
+		
+
+String fileName_tFileOutputDelimited_3 = "";
+    fileName_tFileOutputDelimited_3 = (new java.io.File("C:/Program Files (x86)/TOS_DI-8.0.1/studio/workspace/rejected_flights.csv")).getAbsolutePath().replace("\\","/");
+    String fullName_tFileOutputDelimited_3 = null;
+    String extension_tFileOutputDelimited_3 = null;
+    String directory_tFileOutputDelimited_3 = null;
+    if((fileName_tFileOutputDelimited_3.indexOf("/") != -1)) {
+        if(fileName_tFileOutputDelimited_3.lastIndexOf(".") < fileName_tFileOutputDelimited_3.lastIndexOf("/")) {
+            fullName_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3;
+            extension_tFileOutputDelimited_3 = "";
+        } else {
+            fullName_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3.substring(0, fileName_tFileOutputDelimited_3.lastIndexOf("."));
+            extension_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3.substring(fileName_tFileOutputDelimited_3.lastIndexOf("."));
+        }
+        directory_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3.substring(0, fileName_tFileOutputDelimited_3.lastIndexOf("/"));
+    } else {
+        if(fileName_tFileOutputDelimited_3.lastIndexOf(".") != -1) {
+            fullName_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3.substring(0, fileName_tFileOutputDelimited_3.lastIndexOf("."));
+            extension_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3.substring(fileName_tFileOutputDelimited_3.lastIndexOf("."));
+        } else {
+            fullName_tFileOutputDelimited_3 = fileName_tFileOutputDelimited_3;
+            extension_tFileOutputDelimited_3 = "";
+        }
+        directory_tFileOutputDelimited_3 = "";
+    }
+    boolean isFileGenerated_tFileOutputDelimited_3 = true;
+    java.io.File filetFileOutputDelimited_3 = new java.io.File(fileName_tFileOutputDelimited_3);
+    globalMap.put("tFileOutputDelimited_3_FILE_NAME",fileName_tFileOutputDelimited_3);
+            int nb_line_tFileOutputDelimited_3 = 0;
+            int splitedFileNo_tFileOutputDelimited_3 = 0;
+            int currentRow_tFileOutputDelimited_3 = 0;
+
+            final String OUT_DELIM_tFileOutputDelimited_3 = /** Start field tFileOutputDelimited_3:FIELDSEPARATOR */";"/** End field tFileOutputDelimited_3:FIELDSEPARATOR */;
+
+            final String OUT_DELIM_ROWSEP_tFileOutputDelimited_3 = /** Start field tFileOutputDelimited_3:ROWSEPARATOR */"\n"/** End field tFileOutputDelimited_3:ROWSEPARATOR */;
+
+                    //create directory only if not exists
+                    if(directory_tFileOutputDelimited_3 != null && directory_tFileOutputDelimited_3.trim().length() != 0) {
+                        java.io.File dir_tFileOutputDelimited_3 = new java.io.File(directory_tFileOutputDelimited_3);
+                        if(!dir_tFileOutputDelimited_3.exists()) {
+                            dir_tFileOutputDelimited_3.mkdirs();
+                        }
+                    }
+
+                        //routines.system.Row
+                        java.io.Writer outtFileOutputDelimited_3 = null;
+
+                        java.io.File fileToDelete_tFileOutputDelimited_3 = new java.io.File(fileName_tFileOutputDelimited_3);
+                        if(fileToDelete_tFileOutputDelimited_3.exists()) {
+                            fileToDelete_tFileOutputDelimited_3.delete();
+                        }
+                        outtFileOutputDelimited_3 = new java.io.BufferedWriter(new java.io.OutputStreamWriter(
+                        new java.io.FileOutputStream(fileName_tFileOutputDelimited_3, false),"ISO-8859-15"));
+                                    if(filetFileOutputDelimited_3.length()==0){
+                                        outtFileOutputDelimited_3.write("aeroplano");
+                                            outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
+                                        outtFileOutputDelimited_3.write("origen");
+                                            outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
+                                        outtFileOutputDelimited_3.write("destino");
+                                            outtFileOutputDelimited_3.write(OUT_DELIM_tFileOutputDelimited_3);
+                                        outtFileOutputDelimited_3.write("millas");
+                                        outtFileOutputDelimited_3.write(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
+                                        outtFileOutputDelimited_3.flush();
+                                    }
+
+
+        resourceMap.put("out_tFileOutputDelimited_3", outtFileOutputDelimited_3);
+resourceMap.put("nb_line_tFileOutputDelimited_3", nb_line_tFileOutputDelimited_3);
+
+ 
+
+
+
+/**
+ * [tFileOutputDelimited_3 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tSortRow_2_SortIn begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tSortRow_2_SortIn", false);
+		start_Hash.put("tSortRow_2_SortIn", System.currentTimeMillis());
+		
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+		int tos_count_tSortRow_2_SortIn = 0;
+		
+
+
+RejectedStruct[] array_tSortRow_2_SortIn = (RejectedStruct[]) globalMap.remove("tSortRow_2");
+
+int nb_line_tSortRow_2_SortIn = 0;
+
+RejectedStruct current_tSortRow_2_SortIn = null;
+
+for(int i_tSortRow_2_SortIn = 0; i_tSortRow_2_SortIn < array_tSortRow_2_SortIn.length; i_tSortRow_2_SortIn++){
+	current_tSortRow_2_SortIn = array_tSortRow_2_SortIn[i_tSortRow_2_SortIn];
+	row8.aeroplano = current_tSortRow_2_SortIn.aeroplano;
+	row8.origen = current_tSortRow_2_SortIn.origen;
+	row8.destino = current_tSortRow_2_SortIn.destino;
+	row8.millas = current_tSortRow_2_SortIn.millas;
+	// increase number of line sorted
+	nb_line_tSortRow_2_SortIn++;
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortIn begin ] stop
+ */
+	
+	/**
+	 * [tSortRow_2_SortIn main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+
+ 
+
+
+	tos_count_tSortRow_2_SortIn++;
+
+/**
+ * [tSortRow_2_SortIn main ] stop
+ */
+	
+	/**
+	 * [tSortRow_2_SortIn process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortIn process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tFileOutputDelimited_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row8"
+						
+						);
+					}
+					
+
+
+                    StringBuilder sb_tFileOutputDelimited_3 = new StringBuilder();
+                            if(row8.aeroplano != null) {
+                        sb_tFileOutputDelimited_3.append(
+                            row8.aeroplano
+                        );
+                            }
+                            sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
+                            if(row8.origen != null) {
+                        sb_tFileOutputDelimited_3.append(
+                            row8.origen
+                        );
+                            }
+                            sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
+                            if(row8.destino != null) {
+                        sb_tFileOutputDelimited_3.append(
+                            row8.destino
+                        );
+                            }
+                            sb_tFileOutputDelimited_3.append(OUT_DELIM_tFileOutputDelimited_3);
+                            if(row8.millas != null) {
+                        sb_tFileOutputDelimited_3.append(
+                            row8.millas.setScale(0, java.math.RoundingMode.HALF_UP).toPlainString()
+                        );
+                            }
+                    sb_tFileOutputDelimited_3.append(OUT_DELIM_ROWSEP_tFileOutputDelimited_3);
+
+
+                    nb_line_tFileOutputDelimited_3++;
+                    resourceMap.put("nb_line_tFileOutputDelimited_3", nb_line_tFileOutputDelimited_3);
+
+                        outtFileOutputDelimited_3.write(sb_tFileOutputDelimited_3.toString());
+
+
+
+
+ 
+
+
+	tos_count_tFileOutputDelimited_3++;
+
+/**
+ * [tFileOutputDelimited_3 main ] stop
+ */
+	
+	/**
+	 * [tFileOutputDelimited_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tFileOutputDelimited_3 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tFileOutputDelimited_3 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tFileOutputDelimited_3 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tSortRow_2_SortIn process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortIn process_data_end ] stop
+ */
+	
+	/**
+	 * [tSortRow_2_SortIn end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+
+
+}
+
+globalMap.put("tSortRow_2_SortIn_NB_LINE",nb_line_tSortRow_2_SortIn);
+
+ 
+
+ok_Hash.put("tSortRow_2_SortIn", true);
+end_Hash.put("tSortRow_2_SortIn", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tSortRow_2_SortIn end ] stop
+ */
+
+	
+	/**
+	 * [tFileOutputDelimited_3 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+
+
+
+		
+			
+					if(outtFileOutputDelimited_3!=null) {
+						outtFileOutputDelimited_3.flush();
+						outtFileOutputDelimited_3.close();
+					}
+				
+				globalMap.put("tFileOutputDelimited_3_NB_LINE",nb_line_tFileOutputDelimited_3);
+				globalMap.put("tFileOutputDelimited_3_FILE_NAME",fileName_tFileOutputDelimited_3);
+			
+		
+		
+		resourceMap.put("finish_tFileOutputDelimited_3", true);
+	
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row8");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tFileOutputDelimited_3", true);
+end_Hash.put("tFileOutputDelimited_3", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tFileOutputDelimited_3 end ] stop
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4697,6 +7018,12 @@ end_Hash.put("tLogRow_1", System.currentTimeMillis());
 				throw error;
 			}finally{
 				
+							//free memory for "tSortRow_2_SortIn"
+							globalMap.remove("tSortRow_2");
+						
+							//free memory for "tSortRow_1_SortIn"
+							globalMap.remove("tSortRow_1");
+						
 					     			//free memory for "tMap_2"
 					     			globalMap.remove("tHash_Lookup_row4"); 
 				     			
@@ -4822,6 +7149,52 @@ end_Hash.put("tLogRow_1", System.currentTimeMillis());
 
 	
 	/**
+	 * [tSortRow_1_SortOut finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortOut finally ] stop
+ */
+
+	
+	/**
+	 * [tSortRow_1_SortIn finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_1";
+	
+	currentComponent="tSortRow_1_SortIn";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_1_SortIn finally ] stop
+ */
+
+	
+	/**
 	 * [tFileOutputDelimited_1 finally ] start
 	 */
 
@@ -4876,6 +7249,103 @@ end_Hash.put("tLogRow_1", System.currentTimeMillis());
 /**
  * [tLogRow_1 finally ] stop
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	/**
+	 * [tSortRow_2_SortOut finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortOut";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortOut finally ] stop
+ */
+
+	
+	/**
+	 * [tSortRow_2_SortIn finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tSortRow_2";
+	
+	currentComponent="tSortRow_2_SortIn";
+
+	
+
+ 
+
+
+
+/**
+ * [tSortRow_2_SortIn finally ] stop
+ */
+
+	
+	/**
+	 * [tFileOutputDelimited_3 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFileOutputDelimited_3";
+
+	
+
+
+		if(resourceMap.get("finish_tFileOutputDelimited_3") == null){ 
+			
+				
+						java.io.Writer outtFileOutputDelimited_3 = (java.io.Writer)resourceMap.get("out_tFileOutputDelimited_3");
+						if(outtFileOutputDelimited_3!=null) {
+							outtFileOutputDelimited_3.flush();
+							outtFileOutputDelimited_3.close();
+						}
+					
+				
+			
+		}
+	
+
+ 
+
+
+
+/**
+ * [tFileOutputDelimited_3 finally ] stop
+ */
+
+
+
 
 
 
@@ -5369,7 +7839,7 @@ public void tDBInput_1Process(final java.util.Map<String, Object> globalMap) thr
 				String dbUser_tDBInput_1 = "Username";
 				
 				 
-	final String decryptedPassword_tDBInput_1 = routines.system.PasswordEncryptUtil.decryptPassword("enc:routine.encryption.key.v1:ILCuMK0sKSnUsXcP3W3NIFa+oSKzXBZSPOfe/OPFXITvEpsTqA==");
+	final String decryptedPassword_tDBInput_1 = routines.system.PasswordEncryptUtil.decryptPassword("enc:routine.encryption.key.v1:BCz3ccrc7o8ri5kbW2cfcskCjbWVO4D29/cytdjwvyHgrK6CiA==");
 				
 				String dbPwd_tDBInput_1 = decryptedPassword_tDBInput_1;
 				
@@ -6215,7 +8685,7 @@ public void tFileInputDelimited_1Process(final java.util.Map<String, Object> glo
 
 			   		// connection name:row4
 			   		// source node:tFileInputDelimited_1 - inputs:(after_tDBInput_2) outputs:(row4,row4) | target node:tAdvancedHash_row4 - inputs:(row4) outputs:()
-			   		// linked node: tMap_2 - inputs:(row3,row4,row5) outputs:(FlightDetailsMapped)
+			   		// linked node: tMap_2 - inputs:(row3,row4,row5) outputs:(FlightDetailsMapped,Rejected)
 			   
 			   		org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row4 = 
 			   			org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
@@ -7117,7 +9587,7 @@ public void tFileInputDelimited_2Process(final java.util.Map<String, Object> glo
 
 			   		// connection name:row5
 			   		// source node:tFileInputDelimited_2 - inputs:(after_tDBInput_2) outputs:(row5,row5) | target node:tAdvancedHash_row5 - inputs:(row5) outputs:()
-			   		// linked node: tMap_2 - inputs:(row3,row4,row5) outputs:(FlightDetailsMapped)
+			   		// linked node: tMap_2 - inputs:(row3,row4,row5) outputs:(FlightDetailsMapped,Rejected)
 			   
 			   		org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row5 = 
 			   			org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
@@ -7958,6 +10428,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     183644 characters generated by Talend Open Studio for Data Integration 
- *     on the 1 de julio de 2023, 02:17:35 CST
+ *     238425 characters generated by Talend Open Studio for Data Integration 
+ *     on the 7 de julio de 2023, 16:49:02 CST
  ************************************************************************************************/
