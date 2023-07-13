@@ -12,7 +12,7 @@ create table if not exists detail.flight (
   flightMiles decimal
 );
 
--- Insertar data inicial en la tabla flight
+-- Insertar example data en la tabla flight
 
 -- INSERT INTO detail.flight (id, airplane, origin, destination, departure, arrival, flightMiles) VALUES
 -- (1, 1, 'SAL', 'MIA', TIMESTAMP '2023-05-15 10:15:30', TIMESTAMP '2023-05-15 12:30:45', 500),

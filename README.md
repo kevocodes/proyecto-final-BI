@@ -10,6 +10,7 @@ El presente repositorio contiene el proyecto final de la materia de Fundamentos 
 - [Configuración de bases de datos](#configuración-de-bases-de-datos)
   - [Configuración manual](#configuración-manual)
   - [Configuración con Docker](#configuración-con-docker)
+  - [Creación de data inicial](#creación-de-data-inicial)
 - [Pasos para la ejecución del ETL](#pasos-para-la-ejecución-del-etl)
 - [Importar ETL como job en Talend Open Studio](#importar-etl-como-job-en-talend-open-studio)
 
@@ -76,7 +77,7 @@ La tabla `flight` de PostgreSQL tiene la siguiente estructura:
 | arrival | timestamp | Fecha de arribo | |
 | flightMiles | decimal | Total de millas voladas en el trayecto | |
 
-Los scripts de creación de tablas y de inserción de datos de [MySQL](Databases/mysql-init.sql) y [PostgreSQL](Databases/postgres-init.sql) se encuentran dentro del repositorio en la carpeta [Databases](Databases/). 
+Los scripts para la creación de tablas de [MySQL](/Databases/mysql-init.sql) y [PostgreSQL](/Databases/postgres-init.sql) se encuentran en la carpeta [Databases](/Databases/). Los scripts para la inserción de datos de [MySQL](/Databases/inserts/airplanes.sql) y [PostgreSQL](/Databases/inserts/flights.sql) se encuentran en la carpeta [inserts](/Databases/inserts/).
 ### Configuración con Docker
 Si no deseas instalar localmente las bases de datos de MySQL y PostgreSQL, ni tampoco realizar la definición de las bases de datos y tampoco la inserción de datos, entonces puedes utilizar `docker compose` para realizar todo este proceso de forma automatica.
 
@@ -89,6 +90,12 @@ Los pasos a realizar son los siguientes:
 docker compose up -d
 ```
 Esto inicia y ejecuta los servicios definidos en el archivo docker-compose.yml en segundo plano (modo "detached"), creando así una instancia de MySQL y PostgreSQL con sus respectivas bases de datos, tablas y esquemas.
+
+Los scripts para la inserción de datos de [MySQL](/Databases/inserts/airplanes.sql) y [PostgreSQL](/Databases/inserts/flights.sql) se encuentran en la carpeta [inserts](/Databases/inserts/).
+
+### Creación de data inicial
+
+Si deseas crear data inicial distinta a la que se encuentra en este repositorio, ya sea porque necesitas una mayor cantidad de información o por cualquier otro motivo, puedes revisar la documentación del repositorio [BI-Final-Project-DML-Generator](https://github.com/kevocodes/BI-Final-Project-DML-Generator), el cual es un proyecto realizado con `Node JS` para generar la data inicial que necesitan las bases de datos en este proceso ETL.
 
 ## Pasos para la ejecución del ETL
 Para ejecutar el proceso ETL debes seguir los siguientes pasos:
